@@ -11,7 +11,7 @@ typedef enum {
   TOKEN_TRUE,
   TOKEN_FALSE,
   TOKEN_NULL,
-  TOKEN_QUOTE,
+  TOKEN_COLON,
   TOKEN_EOF,
   TOKEN_LEFT_BRACKET,
   TOKEN_RIGHT_BRACKET
@@ -156,6 +156,7 @@ Token *lexer_next_token(Lexer *lex) {
         case '}':  return create_token(TOKEN_RIGHT_BRACE, NULL);
         case '[':  return create_token(TOKEN_LEFT_BRACKET, NULL);
         case ']':  return create_token(TOKEN_RIGHT_BRACKET, NULL);
+        case ':': return create_token(TOKEN_COLON, NULL);
         case '"':  return lexer_scan_string(lex);
         case 't':
         case 'f':

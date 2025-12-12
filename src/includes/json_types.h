@@ -2,6 +2,7 @@
 #define JSON_TYPES_H
 
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef enum {
     JSON_NULL,
@@ -16,7 +17,7 @@ typedef  struct JsonValue {
     JsonType type;
 
     union {
-        int boolean;
+        bool boolean;
         double number;
         char *string;
 
@@ -28,15 +29,9 @@ typedef  struct JsonValue {
         struct {
             char **keys;
             struct JsonValue **values;
+            size_t count;
         } object;
     } value;
 } JsonValue;
-
-typedef struct Json {
-    char *key;
-    JsonValue *value;
-} Json;
-
-
 
 #endif
